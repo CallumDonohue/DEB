@@ -3,7 +3,7 @@ function [data, auxData, metaData, txtData, weights] = mydata_Galaxias_occidenta
 
 %% set metaData
 metaData.phylum     = 'Chordata';
-metaData.class      = '';
+metaData.class      = 'Actinopterygii';
 metaData.order      = 'Osmeriformes';
 metaData.family     = 'Galaxiidae';
 metaData.species    = 'Galaxias_occidentalis';
@@ -21,18 +21,18 @@ metaData.ecoCode.reprod  = {'O'};
 metaData.T_typical  = C2K(16.5); % K, body temp
 
 metaData.data_0     = {'tp','tpm','am','tp','tpm','tR','am','Lh','Lp','Lpm','Li','Lim','Ri','GSI','GSI','Wwh','Wwp','Wwpm','Wwi','Wwim'};
-metaData.data_1     = {'tL_f','tL_f','tL_m','LN','WwN','LWw_f','LWd_m'};
+metaData.data_1     = {'tL_f','tL_f','tL_m','LN','WwN','LWw_f','LWd_m','LWw_m'};
 
 metaData.COMPLETE   = 2.5; % using criteria of LikaKear2011
 
 metaData.author     = {'Callum Donohue'};
-metaData.date_subm  = [2023 5 30];
+metaData.date_subm  = [2023 5 31];
 metaData.email      = {'callum.donohue@murdoch.edu.au'};
 metaData.address    = {'Harry Butler Institute, Murdoch University'};
 
 metaData.curator    = {'Starrlight Augustine'};
-metaData.email_cur  = {'starrlight.augustine@akvaplan.niva.no'};
-metaData.date_acc   = [2023 5 26];
+metaData.email_cur  = {'starrlight@tecnico.ulisboa.pt'};
+metaData.date_acc   = [2023 6 1];
 
 %% set zero-variate data
 data.tp = 365; units.tp = 'd'; label.tp = 'time since birth at puberty'; bibkey.tp = {'pen1991biology1','morgan1998distribution'};
@@ -798,8 +798,8 @@ units.LWw_f = {'cm', 'g'}; label.LWw_f = {'length', 'wet weight'};
 bibkey.LWw_f = {'Unpublished2023'};
 comment.LWw_f = 'Combination from data collected in 2004 and 2006 from various sites in the south-west of Western Australia';
 
-% length - dry weight
-data.LWd_m = [ ... 
+% length - wet weight
+data.LWw_m = [ ... 
   59 0.775
   63 1.035
   53 0.723
@@ -1056,9 +1056,9 @@ data.LWd_m = [ ...
   58 0.64
   51 0.47
   54 0.53];
-units.LWd_m = {'cm', 'g'}; label.LWd_m = {'length', 'dry weight'};
-bibkey.LWd_m = {'Unpublished2023'};
-comment.LWd_m = 'Combination from data collected in 2004 and 2006 from various sites in the south-west of Western Australia';
+units.LWw_m = {'cm', 'g'}; label.LWw_m = {'length', 'wet weight'};
+bibkey.LWw_m = {'Unpublished2023'};
+comment.LWw_m = 'Combination from data collected in 2004 and 2006 from various sites in the south-west of Western Australia';
 
 %% set weights for all real data
 weights = setweights(data, []);
@@ -1081,10 +1081,9 @@ metaData.grp.comment = {comment1};
 %% Links
 metaData.links.id_CoL = '3F2WH'; % Cat of Life
 metaData.links.id_EoL = '224692'; % Ency of Life
-metaData.links.id_Wiki = 'Galaxias_occidentalis'; % Wikipedia
+metaData.links.id_Wiki = 'Western_galaxias'; % Wikipedia
 metaData.links.id_ADW = 'Galaxias_occidentalis'; % Anim Div. Web
 metaData.links.id_Taxo = '174650'; % Taxonomicon
-metaData.links.id_WoRMS = '1019000';
 
 %% References
 bibkey = 'Kooy2010'; type = 'Book'; bib = [ ...  % used in setting of chemical parameters and pseudodata
