@@ -63,7 +63,7 @@ L_mm = v/ k_M/ g_m; % cm, max structural length
 L_im = l_im * L_mm;  % cm, ultimate structural length
 Lw_im = L_im/ del_M; % cm, ultimate physical length
 pars_tpm = [g_m k l_T v_Hb v_Hpm]; % pars for males
-[tau_pm, tau_bm, l_pm] = get_tp(pars_tpm, f); % - , scaled time, length
+% [tau_pm, tau_bm, l_pm] = get_tp(pars_tpm, f); % - , scaled time, length
 L_pm = L_mm * l_pm; % cm, structural length at puberty
 t_pm = (tau_pm - tau_bm)/ k_M/ TC_tpm; % d, time since birth at puberty
 Lw_pm = L_pm/ del_M; % cm, physical at puberty
@@ -85,38 +85,52 @@ prdData.Wwi = Ww_i;
 prdData.Wwim = Ww_im;
 
 % time - length
-[tau_j, tau_p, tau_b, l_j, l_p, l_b, l_i, rho_j, rho_B] = get_tj(pars_tj, f_tL_f);
-r_B = TC_tL_f * rho_B * k_M; r_j = TC_tL_f * rho_j * k_M; t_j = (tau_j - tau_b)/ k_M/ TC_tL_f;
-L_b = L_m * l_b;  L_j = L_m * l_j; L_i = L_m * l_i;
-L_bj = L_b * exp(tL_f(tL_f(:,1) < t_j,1) * r_j/ 3);
-L_ji = L_i - (L_i - L_j) * exp( - r_B * (tL_f(tL_f(:,1) >= t_j,1) - t_j));
-tL_f = [L_bj; L_ji]/ del_M; % cm, physical length
+% [tau_j, tau_p, tau_b, l_j, l_p, l_b, l_i, rho_j, rho_B] = get_tj(pars_tj, f_tL_f);
+% [tvel, t_j, t_p, t_b, L_j, l_p l_b] = get_tj(pars_tj, f_tL, [], (tL_f(:,1)+t_0)*k_M*TC_tL_f);
+[tvel, t_j, t_p, t_b, L_j, l_p l_b] = get_tj(pars_tj, f_tL, [], tL_f(:,1)*k_M*TC_tL_f);
+
+
+% ELw_f = (L_m*tvel(:,4)).^3 .* (1+tvel(:,3) * W);
+ELw_f = L_m * tvel(:,4) / del_M;
+
+% r_B = TC_tL_f * rho_B * k_M; r_j = TC_tL_f * rho_j * k_M; t_j = (tau_j - tau_b)/ k_M/ TC_tL_f;
+% L_b = L_m * l_b;  L_j = L_m * l_j; L_i = L_m * l_i;
+% L_bj = L_b * exp(tL_f(tL_f(:,1) < t_j,1) * r_j/ 3);
+% L_ji = L_i - (L_i - L_j) * exp( - r_B * (tL_f(tL_f(:,1) >= t_j,1) - t_j));
+% tL_f = [L_bj; L_ji]/ del_M; % cm, physical length
 
 % time - length for males
-[tau_jm, tau_pm, tau_bm, l_jm, l_pm, l_bm, l_im, rho_jm, rho_Bm] = get_tj(pars_tjm, f_tL_m);
-r_Bm = TC_tL_m * rho_Bm * k_M; r_jm = TC_tL_m * rho_jm * k_M; t_jm = (tau_jm - tau_bm)/ k_M/ TC_tL_m;
-L_bm = L_mm * l_bm;  L_jm = L_mm * l_jm; L_im = L_mm * l_im;
-L_bj = L_bm * exp(tL_m(tL_m(:,1) < t_jm,1) * r_jm/ 3);
-L_ji = L_im - (L_im - L_jm) * exp( - r_Bm * (tL_m(tL_m(:,1) >= t_jm,1) - t_jm));
-tL_m = [L_bj; L_ji]/ del_M; % cm, physical length
+% [tau_jm, tau_pm, tau_bm, l_jm, l_pm, l_bm, l_im, rho_jm, rho_Bm] = get_tj(pars_tjm, f_tL_m);
+% r_Bm = TC_tL_m * rho_Bm * k_M; r_jm = TC_tL_m * rho_jm * k_M; t_jm = (tau_jm - tau_bm)/ k_M/ TC_tL_m;
+% L_bm = L_mm * l_bm;  L_jm = L_mm * l_jm; L_im = L_mm * l_im;
+% L_bj = L_bm * exp(tL_m(tL_m(:,1) < t_jm,1) * r_jm/ 3);
+% L_ji = L_im - (L_im - L_jm) * exp( - r_Bm * (tL_m(tL_m(:,1) >= t_jm,1) - t_jm));
+% tL_m = [L_bj; L_ji]/ del_M; % cm, physical length
+
+% tvel = get_tj(pars_tjm, f_tL, [t_b, f_tL*z/z_m, l_b*z/z_m], (tL_m(:,1) + t_0)*k_M*TC_tL_m);
+tvel = get_tj(pars_tjm, f_tL, [t_b, f_tL*z/z_m, l_b*z/z_m], tL_m(:,1)*k_M*TC_tL_m);
+
+% ELw_f = (L_m*tvel(:,4)).^3 .* (1+tvel(:,3) * W);
+ELw_m = L_mm * tvel(:,4) / del_M;
+
 
 % length - yearly fecundity
 pars_R = [kap; kap_R; g; k_J; k_M; L_T; v; U_Hb; U_Hj; U_Hp]; % compose parameter vector
-LN = TC_LN * 365 * reprod_rate_j(LN(:,1) * del_M, f_LN, pars_R); % #, yearly fecundity
+LN = TC_LN * 365 * reprod_rate_j(LN(:,1) * del_M, f, pars_R); % #, yearly fecundity
 
 % wet weight - yearly fecundity
 pars_R = [kap; kap_R; g; k_J; k_M; L_T; v; U_Hb; U_Hj; U_Hp]; % compose parameter vector
-WwN = TC_WwN * 365 * reprod_rate_j((WwN(:,1)/ (1 + f_WwN * ome)).^(1/3), f_WwN, pars_R); % #, yearly fecundity
+WwN = TC_WwN * 365 * reprod_rate_j((WwN(:,1)/ (1 + f * ome)).^(1/3), f, pars_R); % #, yearly fecundity
 
 % length - wet weight
-LWw_f = (LWw_f(:,1) * del_M).^3 * (1 + f_LWw_f * ome); % g, wet weight
+LWw_f = (LWw_f(:,1) * del_M).^3 * (1 + f * ome); % g, wet weight
 
 % length - wet weight for males
-LWw_m = (LWw_m(:,1) * del_M).^3 * (1 + f_LWw_m * ome_m); % g, wet weight
+LWw_m = (LWw_m(:,1) * del_M).^3 * (1 + f * ome_m); % g, wet weight
 
 % pack to output
-prdData.tL_f = tL_f;
-prdData.tL_m = tL_m;
+prdData.tL_f = ELw_f;
+prdData.tL_m = ELw_m;
 prdData.LN = LN;
 prdData.WwN = WwN;
 prdData.LWw_f = LWw_f;

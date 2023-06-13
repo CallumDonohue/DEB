@@ -45,49 +45,94 @@ data.am = 1825; units.am = 'd'; label.am = 'life span'; bibkey.am = {'pen1991bio
   temp.am = C2K(17.5); units.temp.am = 'K'; label.temp.am = 'temperature';
   comment.am = 'Temperature reaches a mimumum of 9 - 12 degrees C in July to August and a maximum of 18 - 26 degrees C between November and March. Mean temerpature (9 - 26) provided. ';
 
+  %1.12
 data.Lh = 0.61; units.Lh = 'cm'; label.Lh = 'length at hatch'; bibkey.Lh = {'gill1994larval'};
-  comment.Lh = 'Smallest larval stage recorded. Immediately after hatch may be smaller. ';
+  comment.Lh = 'Smallest larval stage recorded was 0.61 cm. Given is the mean of the range of values given in Table 1 for body lengths. ';
 data.Lp = 7.5; units.Lp = 'cm'; label.Lp = 'length at puberty'; bibkey.Lp = {'pen1991biology2','morgan1998distribution'};
 data.Lpm = 7; units.Lpm = 'cm'; label.Lpm = 'length at puberty for males'; bibkey.Lpm = {'pen1991biology2','morgan1998distribution'};
-data.Li = 16.3; units.Li = 'cm'; label.Li = 'ultimate length'; bibkey.Li = {'pen1991biology2'};
+data.Li = 13.0; units.Li = 'cm'; label.Li = 'ultimate length'; bibkey.Li = {'Unpublished2023'};
   comment.Li = 'Apparently larger individuals have been found. Personal communications has suggested that a female of 19 cm has been seen. However, 16.3 cm is published alongside an ultimate weight. The weight of larger individuals is unknown. ';
-data.Lim = 12.6; units.Lim = 'cm'; label.Lim = 'ultimate length for males'; bibkey.Lim = {'pen1991biology2'};
+data.Lim = 10.0; units.Lim = 'cm'; label.Lim = 'ultimate length for males'; bibkey.Lim = {'Unpublished2023'};
 
 data.Ri = 4.21; units.Ri = '#/d'; label.Ri = 'ultimate reproduction rate'; bibkey.Ri = {'pen1991biology1'};
   temp.Ri = C2K(17.5); units.temp.Ri = 'K'; label.temp.Ri = 'temperature';
   comment.Ri = 'Temperature reaches a mimumum of 9 - 12 degrees C in July to August and a maximum of 18 - 26 degrees C between November and March. Mean temerpature (9 - 26) provided. Rate = 1538 (annual fecunditiy at age 3) / 365 (e.g., ultimate fecundity; can also do mean fecudity over life = 905/365)';
 
 data.Wwp = 2.8; units.Wwp = 'g'; label.Wwp = 'wet weight at puberty'; bibkey.Wwp = {'pen1991biology1'};
-data.Wwi = 32; units.Wwi = 'g'; label.Wwi = 'ultimate wet weight'; bibkey.Wwi = {'pen1991biology2'};
-data.Wwim = 12.1; units.Wwim = 'g'; label.Wwim = 'ultimate wet weight for males'; bibkey.Wwim = {'pen1991biology2'};
+data.Wwi = 10.67; units.Wwi = 'g'; label.Wwi = 'ultimate wet weight'; bibkey.Wwi = {'Unpublished2023'};
+data.Wwim = 4.05; units.Wwim = 'g'; label.Wwim = 'ultimate wet weight for males'; bibkey.Wwim = {'Unpublished2023'};
 
 %% set uni-variate data
 % time - length
 data.tL_f = [ ... 
-  38.69 2.892
-  66.795 3.5043
-  102.565 4.2085
-  138.7 4.8821
-  186.515 5.6168
-  250.39 6.321
-  318.28 7.0558
-  386.17 7.6681
-  446.03 8.1886
-  509.905 8.7091
-  577.795 9.1989
-  653.715 9.6275
-  721.605 10.0255
-  817.6 10.4236
-  941.335 10.8828
-  1049.38 11.1889
-  1181.14 11.4645
-  1292.83 11.6482
-  1408.54 11.7707
-  1508.55 11.9237
-  1596.51 12.0156
-  1684.11 12.1074
-  1780.11 12.1993
-  1827.92 12.2605];
+44.35474006	3.748056657
+70.22744988	3.865763949
+83.95718654	3.8657715
+98.00483826	4.192372779
+117.2232416	5.026680953
+128.9503479	4.5886776
+133.8562691	4.865106694
+169.418614	5.101586772
+171.0825688	4.843584734
+196.4281346	5.331675856
+198.0282664	5.243311675
+228.1100917	5.843239035
+234.5927081	5.385869764
+260.5840979	6.401214481
+261.8495844	6.577981371
+268.6005817	6.383651407
+284.3455658	6.750104257
+306.6272333	7.173761491
+318.4036697	7.795107138
+334.8979985	6.853210729
+341.628306	7.177427509
+351.6697248	7.842973113
+362.9398504	7.334862105
+377.8073395	7.913708387
+378.9284508	7.62064069
+398.5062713	7.95412816
+408.2094322	8.386713365
+411.8654434	8.193493877
+425.2272547	8.756880454
+441.5459768	8.760147236
+443.5474006	8.890564302
+451.8292973	8.688073115
+465.7247706	9.911846933
+478.1150167	8.879584419
+484.5693098	8.596329995
+491.0703364	8.568053997
+496.4983967	8.442203538
+511.2151727	8.848623573
+529.8717264	8.630670164
+544.0021355	9.100917151
+556.0949421	8.772145111
+571.2802626	8.986238252
+586.2587673	9.099003896
+602.7964371	9.926605225
+631.4204729	9.674311647
+645.0092542	9.683192113
+666.2763791	10.08715568
+678.3366024	10.1028678
+691.5700732	10.43119238
+711.6869414	10.40693895
+721.7215589	11.37155935
+737.3399873	9.4154062
+754.3895809	10.7522933
+767.2477044	9.972476784
+774.8654411	8.725695003
+797.8999933	9.582568527
+804.6844054	10.78662171
+819.8633458	10.5229355
+827.808472	10.51158709
+846.3495777	9.605504307
+854.1328468	10.14440211
+924.3309038	11.02752266
+];
+
+% [~,i] = sort(data.tL_f(:,1));
+% data.tL_f = data.tL_f(i,:);
+
+
 units.tL_f = {'d', 'cm'}; label.tL_f = {'time', 'length'};
 temp.tL_f = C2K(17.5); units.temp.tL_f = 'K'; label.temp.tL_f = 'temperature';
 bibkey.tL_f = {'pen1991biology2'};
@@ -95,37 +140,87 @@ comment.tL_f = 'Temperature reaches a mimumum of 9 - 12 degrees C in July to Aug
 
 % time - length
 data.tL_m = [ ... 
-  21.9 3.0084
-  45.99 3.3758
-  96.36 4.0922
-  151.475 4.7351
-  199.29 5.3413
-  249.66 5.8924
-  300.03 6.3884
-  359.89 6.9027
-  432.89 7.4538
-  512.825 7.9568
-  595.68 8.416
-  689.85 8.8534
-  798.255 9.2689
-  889.505 9.5751
-  986.595 9.7719
-  1077.85 9.9687
-  1172.02 10.1436
-  1263.27 10.253
-  1365.83 10.3842
-  1462.92 10.4717];
+44.35474006	3.794433468
+68.64568832	3.819355501
+81.58103976	3.912041942
+100.391275	4.192622735
+116.4311927	5.026645497
+128.9411516	4.634919411
+134.648318	4.888330556
+168.6185369	5.12462436
+170.2905199	4.843549277
+195.6360856	5.401205617
+198.0282664	5.243311675
+228.9021407	5.843274491
+236.183666	5.386036401
+260.4410752	6.256880454
+261.3761468	6.354873126
+269.4512384	6.106283857
+285.9296636	6.286407053
+306.6870091	6.873189718
+316.8195719	7.238514486
+334.832268	6.371559353
+341.6880819	6.876855735
+351.6697248	7.889349924
+360.8239567	6.830274949
+376.2232416	7.728130228
+376.6523694	7.065488998
+399.7707995	7.220183206
+409.988914	7.438922869
+413.4495413	7.544289427
+425.0864038	7.724770362
+443.3254586	7.81235674
+443.5474006	7.823897635
+451.7260067	7.931192381
+464.9327217	8.914710027
+479.0484399	8.186040567
+485.0325528	6.990825408
+491.0703364	7.941967041
+497.3490534	8.164835989
+509.6752027	7.564219904
+532.3915094	7.960413855
+541.8768517	8.527522656
+558.6009306	8.171251519
+571.2020121	8.412843757
+588.0612397	8.035608873
+602.7087965	9.28440339
+623.1036958	7.831186739
+631.3484824	9.146788711
+645.8047331	9.683275432
+664.7990095	9.26146761
+678.419369	9.686691493
+691.382272	9.055045592
+711.034005	9.690107555
+722.1816719	9.743118986
+737.3537817	9.346043483
+752.2079568	9.766054766
+767.0974634	8.871559353
+773.9917937	9.118667081
+796.4382738	8.871559353
+803.2497845	10.00034428
+818.2889456	8.986238252
+827.1923207	9.609788445
+845.6077629	9.169724491
+853.3971438	9.843747015
+];
+
+% [~,i] = sort(data.tL_m(:,1));
+% data.tL_m = data.tL_m(i,:);
+
 units.tL_m = {'d', 'cm'}; label.tL_m = {'time', 'length'};
 temp.tL_m = C2K(17.5); units.temp.tL_m = 'K'; label.temp.tL_m = 'temperature';
 bibkey.tL_m = {'pen1991biology2'};
 comment.tL_m = 'Temperature reaches a mimumum of 9 - 12 degrees C in July to August and a maximum of 18 - 26 degrees C between November and March. Mean temerpature (9 - 26) provided. ';
 
+
+%removed (trendlint) - 
+%   5.084 130.942
+%   5.2652 165.406
+%   5.4677 195.949
+%   5.6808 226.469
+
 % length - yearly fecundity
 data.LN = [ ... 
-  5.084 130.942
-  5.2652 165.406
-  5.4677 195.949
-  5.6808 226.469
   5.7771 288.236
   5.8354 262.928
   5.9154 289.868
@@ -265,6 +360,7 @@ data.LN = [ ...
   11.0278 2129.21
   11.2174 2197.61
   11.3522 1781.73];
+
 units.LN = {'cm', '#'}; label.LN = {'length', 'yearly fecundity'};
 temp.LN = C2K(17.5); units.temp.LN = 'K'; label.temp.LN = 'temperature';
 bibkey.LN = {'pen1991biology1'};
@@ -1063,6 +1159,30 @@ comment.LWw_m = 'Combination from data collected in 2004 and 2006 from various s
 %% set weights for all real data
 weights = setweights(data, []);
 
+% Weight length
+% weights.LWw_f = 3 * weights.LWw_f;
+% weights.LWw_m = 3 * weights.LWw_m;
+% 
+weights.tL_f = 3 * weights.tL_f;
+weights.tL_m = 3 * weights.tL_m;
+% 
+% % % Weight and length at puberty
+% weights.Wwp = 5 * weights.Wwp;
+% weights.Lp = 5 * weights.Lp;
+% weights.Lpm = 5 * weights.Lpm;
+
+% % Ultimate length 
+% weights.Li = 5 * weights.Li;
+% weights.Lim = 5 * weights.Lim;
+% 
+% % time since birth at puberty
+% weights.tp = 5*weights.tp;
+% weights.tpm = 5*weights.tpm;
+
+% Length at hatch
+% weights.Lh = 0.5 * weights.Lh;
+
+
 %% set pseudodata and respective weights
 [data, units, label, weights] = addpseudodata(data, units, label, weights);
 
@@ -1075,8 +1195,11 @@ txtData.comment = comment;
 
 %% Group plots
 set1 = {'tL_f','tL_m'}; comment1 = {'Data for females, males'};
-metaData.grp.sets = {set1};
-metaData.grp.comment = {comment1};
+% Change variable names to other plot
+set2 = {'LWw_f','LWw_m'}; comment2 = {'Data for females, males'};
+
+metaData.grp.sets = {set1, set2};
+metaData.grp.comment = {comment1, comment2};
 
 %% Links
 metaData.links.id_CoL = '3F2WH'; % Cat of Life
